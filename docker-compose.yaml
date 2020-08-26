@@ -1,0 +1,20 @@
+# https://docs.docker.com/compose/compose-file
+# docker-compose up
+# docker-compose stop
+# docker-compose down
+version: '3'
+
+networks:
+  shared-network:
+    driver: bridge
+
+services:
+
+  # This starts a local PostgreSQL DB.
+  db:
+    container_name: blog_db
+    networks:
+      - shared-network
+    image: mongo:latest
+    ports:
+      - 5432:27017
